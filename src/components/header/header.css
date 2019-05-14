@@ -1,0 +1,28 @@
+.header {
+    margin-top: .5rem;
+    padding-left: 10px;
+}
+
+.header__item {
+    list-style: none;
+    margin: 0;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+}
+
+.header__item:hover {
+    background-color: #444;
+}
+
+.item__href:hover {
+    text-decoration: none;
+}
+
+.title__href {
+    color: white;
+}
+
+.title__href:hover {
+    color: #00bc8c;
+    text-decoration: none;
+}
