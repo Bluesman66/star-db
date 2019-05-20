@@ -31,13 +31,15 @@ export default class App extends Component {
     })
   }
 
-  componentDidCatch = () => {
-
+  componentDidCatch = () => {        
+    this.setState({
+      hasError: true
+    })
   }
 
   render() {
     
-    if (this.hasError) {
+    if (this.state.hasError) {
       return <ErrorIndicator />;
     }
 
