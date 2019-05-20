@@ -1,0 +1,4 @@
+{
+    "react-components.tests": false,
+    "react-components.root": "<root>/src/components"
+}
