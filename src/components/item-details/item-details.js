@@ -13,6 +13,7 @@ export default class ItemDetails extends Component {
 
     state = {
         item: null,
+        image: null,
         loading: true,
         error: false
     }
@@ -27,13 +28,6 @@ export default class ItemDetails extends Component {
         }
     }
 
-    onItemLoaded = (item) => {
-        this.setState({
-            item,
-            loading: false
-        });
-    }
-
     onError = () => {
         this.setState({
             error: true,
@@ -43,7 +37,7 @@ export default class ItemDetails extends Component {
 
     updateItem = () => {      
 
-        const { itemId, getData } = this.props;
+        const { itemId, getData, getImageUrl } = this.props;
 
         if (!itemId) {
             return;
@@ -54,7 +48,13 @@ export default class ItemDetails extends Component {
         });
 
         getData(itemId)
-            .then(this.onItemLoaded)
+            .then((item) => {
+                this.setState({
+                    item,
+                    image: getImageUrl(item),
+                    loading: false
+                });
+            })
             .catch(this.onError);
     }
 
@@ -64,12 +64,12 @@ export default class ItemDetails extends Component {
             return <span>Select an item from a list</span>;
         }
 
-        const { item, loading, error } = this.state;        
+        const { item, image, loading, error } = this.state;        
         const hasData = !(loading || error);
 
         const errorMessage = error ? <ErrorIndicator /> : null;
         const spinner = loading ? <Spinner /> : null;        
-        const content = hasData ? <ItemView item={item} /> : null;
+        const content = hasData ? <ItemView item={item} image={image}/> : null;
 
         return (
             <div className="item-details card">
@@ -81,14 +81,13 @@ export default class ItemDetails extends Component {
     }
 }
 
-const ItemView = ({ item }) => {
+const ItemView = ({ item, image }) => {
 
     const { id, name, gender, birthYear, eyeColor } = item;
 
     return (
         <React.Fragment>
-            <img className="item-details__image"
-                src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+            <img className="item-details__image" src={image} />
 
             <div className="item-details__body card-body">
                 <h4>{name}</h4>
