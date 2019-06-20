@@ -7,6 +7,19 @@ import ErrorButton from '../error-button';
 
 import './item-details.css';
 
+const Record = ({ item, field, label }) => {
+    return (
+        <li className="item-details__item list-group-item">
+            <span className="item-details__term">{label}</span>
+            <span>{field}</span>
+        </li>
+    )
+}
+
+export {
+    Record
+}
+
 export default class ItemDetails extends Component {
 
     swapiService = new SwapiService();
@@ -35,7 +48,7 @@ export default class ItemDetails extends Component {
         });
     }
 
-    updateItem = () => {      
+    updateItem = () => {
 
         const { itemId, getData, getImageUrl } = this.props;
 
@@ -64,12 +77,12 @@ export default class ItemDetails extends Component {
             return <span>Select an item from a list</span>;
         }
 
-        const { item, image, loading, error } = this.state;        
+        const { item, image, loading, error } = this.state;
         const hasData = !(loading || error);
 
         const errorMessage = error ? <ErrorIndicator /> : null;
-        const spinner = loading ? <Spinner /> : null;        
-        const content = hasData ? <ItemView item={item} image={image}/> : null;
+        const spinner = loading ? <Spinner /> : null;
+        const content = hasData ? <ItemView item={item} image={image} /> : null;
 
         return (
             <div className="item-details card">
@@ -92,18 +105,7 @@ const ItemView = ({ item, image }) => {
             <div className="item-details__body card-body">
                 <h4>{name}</h4>
                 <ul className="item-details__list list-group list-group-flush">
-                    <li className="item-details__item list-group-item">
-                        <span className="item-details__term">Gender</span>
-                        <span>{gender}</span>
-                    </li>
-                    <li className="item-details__item list-group-item">
-                        <span className="item-details__term">Birth Year</span>
-                        <span>{birthYear}</span>
-                    </li>
-                    <li className="item-details__item list-group-item">
-                        <span className="item-details__term">Eye Color</span>
-                        <span>{eyeColor}</span>
-                    </li>
+                    {this.props.children}
                 </ul>
                 <ErrorButton />
             </div>
