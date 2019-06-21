@@ -8,7 +8,7 @@ import ErrorBoundry from '../error-boundry';
 
 import './app.css';
 import Row from '../row';
-import ItemDetails, { Record } from '../item-details';
+import ItemDetails, { Record } from '../item-details/item-details';
 
 export default class App extends Component {
 

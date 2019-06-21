@@ -7,17 +7,13 @@ import ErrorButton from '../error-button';
 
 import './item-details.css';
 
-const Record = ({ item, field, label }) => {
+export const Record = ({ item, field, label }) => {
     return (
         <li className="item-details__item list-group-item">
             <span className="item-details__term">{label}</span>
             <span>{field}</span>
         </li>
     )
-}
-
-export {
-    Record
 }
 
 export default class ItemDetails extends Component {
@@ -94,21 +90,21 @@ export default class ItemDetails extends Component {
     }
 }
 
-const ItemView = ({ item, image }) => {
+class ItemView extends Component {
+    render() {
+        const { id, name, gender, birthYear, eyeColor } = this.props.item;
+        return (
+            <React.Fragment>
+                <img className="item-details__image" src={this.props.image} />
 
-    const { id, name, gender, birthYear, eyeColor } = item;
-
-    return (
-        <React.Fragment>
-            <img className="item-details__image" src={image} />
-
-            <div className="item-details__body card-body">
-                <h4>{name}</h4>
-                <ul className="item-details__list list-group list-group-flush">
-                    {this.props.children}
-                </ul>
-                <ErrorButton />
-            </div>
-        </React.Fragment>
-    )
+                <div className="item-details__body card-body">
+                    <h4>{name}</h4>
+                    <ul className="item-details__list list-group list-group-flush">
+                        {this.props.children}
+                    </ul>
+                    <ErrorButton />
+                </div>
+            </React.Fragment>
+        );
+    }
 }
