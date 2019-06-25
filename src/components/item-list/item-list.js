@@ -4,28 +4,12 @@ import Spinner from '../spinner';
 
 import './item-list.css';
 
-export default class ItemList extends Component {
-
-    state = {
-        itemList: null 
-    }
-
-    componentDidMount = () => {
-
-        const { getData } = this.props;
-
-        getData()            
-            .then((itemList) => {
-                this.setState({
-                    itemList
-                });
-            });
-    }
+class ItemList extends Component {
 
     renderItems = (arr) => {
         return arr.map((item) => {
-            const {id} = item;             
-            const label = this.props.children(item);            
+            const { id } = item;
+            const label = this.props.children(item);
             return (
                 <li className="item-list__item list-group-item"
                     key={id}
@@ -37,14 +21,8 @@ export default class ItemList extends Component {
     }
 
     render() {
-
-        const { itemList: peopleList } = this.state;
-
-        if (!peopleList) {
-            return <Spinner />
-        }
-
-        const items = this.renderItems(peopleList);
+        const { data } = this.props;
+        const items = this.renderItems(data);
 
         return (
             <ul className="item-list list-group">
@@ -53,3 +31,35 @@ export default class ItemList extends Component {
         );
     }
 }
+
+const withData = (View) => {
+    return class extends Component {
+        state = {
+            data: null
+        }
+
+        componentDidMount = () => {
+
+            const { getData } = this.props;
+
+            getData()
+                .then((data) => {
+                    this.setState({
+                        data
+                    });
+                });
+        }        
+
+        render() {
+            const { data } = this.state;
+
+            if (!data) {
+                return <Spinner />
+            }
+
+            return <View {...this.props} data={data} />;
+        }
+    }
+}
+
+export default withData(ItemList);
