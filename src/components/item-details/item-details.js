@@ -11,7 +11,7 @@ export const Record = ({ item, field, label }) => {
     return (
         <li className="item-details__item list-group-item">
             <span className="item-details__term">{label}</span>
-            <span>{field}</span>
+            <span>{item[field]}</span>
         </li>
     )
 }
@@ -92,18 +92,19 @@ export default class ItemDetails extends Component {
 
 class ItemView extends Component {
     render() {
-        const { id, name, gender, birthYear, eyeColor } = this.props.item;
+        const item = this.props.item;        
         return (
             <React.Fragment>
+                {/* eslint-disable-next-line */}
                 <img className="item-details__image" src={this.props.image} />
 
                 <div className="item-details__body card-body">
-                    <h4>{name}</h4>
+                    <h4>{this.props.name}</h4>
                     <ul className="item-details__list list-group list-group-flush">
                         {
                             React.Children.map(this.props.children, (child) => {
-                                return child;
-                            })                            
+                                return React.cloneElement(child, { item });
+                            })
                         }
                     </ul>
                     <ErrorButton />
