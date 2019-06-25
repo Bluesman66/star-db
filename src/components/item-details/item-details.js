@@ -78,7 +78,7 @@ export default class ItemDetails extends Component {
 
         const errorMessage = error ? <ErrorIndicator /> : null;
         const spinner = loading ? <Spinner /> : null;
-        const content = hasData ? <ItemView item={item} image={image} /> : null;
+        const content = hasData ? <ItemView item={item} image={image} children={this.props.children} /> : null;
 
         return (
             <div className="item-details card">
@@ -100,7 +100,11 @@ class ItemView extends Component {
                 <div className="item-details__body card-body">
                     <h4>{name}</h4>
                     <ul className="item-details__list list-group list-group-flush">
-                        {this.props.children}
+                        {
+                            React.Children.map(this.props.children, (child) => {
+                                return child;
+                            })                            
+                        }
                     </ul>
                     <ErrorButton />
                 </div>
