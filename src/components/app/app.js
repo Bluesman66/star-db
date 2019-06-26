@@ -6,7 +6,7 @@ import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
 
-import Row from '../row';
+// import Row from '../row';
 import ItemList from '../item-list';
 import ItemDetails, { Record } from '../item-details/item-details';
 
@@ -77,6 +77,7 @@ export default class App extends Component {
           {/* <Row
             left={personDetails}
             right={starshipDetails} /> */}
+
           <ItemList
             getData={getAllPeople}
             onItemSelected={() => {}}>
@@ -87,6 +88,7 @@ export default class App extends Component {
             getData={getAllPlanets}
             onItemSelected={() => {}}>
             {({ name }) => <span>{name}</span>}
+
           </ItemList>
         </div >
       </ErrorBoundry>
