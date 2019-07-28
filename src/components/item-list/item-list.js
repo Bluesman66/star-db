@@ -1,13 +1,9 @@
 import React from 'react';
 
-import SwapiService from '../../services/swapi-service';
-import { withData } from '../hoc-helpers';
-
 import './item-list.css';
 
 const ItemList = (props) => {
     const { data, onItemSelected, children: renderLabel } = props;
-
 
     const items = data.map((item) => {
         const { id } = item;
@@ -23,11 +19,13 @@ const ItemList = (props) => {
     });
 
     return (
-        <ul className="item-list list-group">
-            {items}
-        </ul>
+        <React.Fragment>
+            <br />
+            <ul className="item-list list-group">
+                {items}
+            </ul>
+        </React.Fragment>
     );
 }
 
-const { getAllPeople } = new SwapiService();
-export default withData(ItemList, getAllPeople);
+export default ItemList;
