@@ -92,11 +92,10 @@ export default class ItemDetails extends Component {
 
 class ItemView extends Component {
     render() {
-        const item = this.props.item;        
+        const item = this.props.item;
         return (
             <React.Fragment>
-                {/* eslint-disable-next-line */}
-                <img className="item-details__image" src={this.props.image} />
+                <img className="item-details__image" src={this.props.image} alt="" />
 
                 <div className="item-details__body card-body">
                     <h4>{this.props.name}</h4>
