@@ -1,5 +1,7 @@
 import SwapiService from './swapi-service';
+import DummySwapiService from './dummy-swapi-service';
 
 export {
-    SwapiService
+    SwapiService,
+    DummySwapiService  
 };
