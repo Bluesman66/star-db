@@ -26,3 +26,8 @@
     color: #00bc8c;
     text-decoration: none;
 }
+
+.header__button {
+    height: 2.2rem;
+    margin-top: 3px;
+}
