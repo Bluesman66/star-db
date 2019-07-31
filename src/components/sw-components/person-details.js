@@ -3,7 +3,7 @@ import React from 'react';
 import ItemDetails, { Record } from '../item-details';
 import { withSwapiService } from '../hoc-helpers';
 
-const PersonDetails = (props) => {    
+const PersonDetails = (props) => {
     return (
         <ItemDetails {...props}>
             <Record field="gender" label="Gender" />

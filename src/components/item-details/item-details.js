@@ -28,8 +28,8 @@ export default class ItemDetails extends Component {
     }
 
     componentDidUpdate = (prevProps) => {
-        if (this.props.itemId !== prevProps.itemId || 
-            this.props.getData !== prevProps.getData || 
+        if (this.props.itemId !== prevProps.itemId ||
+            this.props.getData !== prevProps.getData ||
             this.props.getImageUrl !== prevProps.getImageUrl) {
             this.updateItem();
         }
@@ -79,11 +79,14 @@ export default class ItemDetails extends Component {
         const content = hasData ? <ItemView item={item} image={image} children={this.props.children} /> : null;
 
         return (
-            <div className="item-details card">
-                {errorMessage}
-                {spinner}
-                {content}
-            </div>
+            <React.Fragment>
+                <br />
+                <div className="item-details card">
+                    {errorMessage}
+                    {spinner}
+                    {content}
+                </div>
+            </React.Fragment>
         )
     }
 }

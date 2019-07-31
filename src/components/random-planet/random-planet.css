@@ -1,3 +1,7 @@
+.jumbotron {
+    margin-bottom: 0; 
+}
+
 .random-planet {
     display: flex;
     padding: 1rem;
