@@ -68,7 +68,11 @@ export default class ItemDetails extends Component {
     render() {
 
         if (!this.state.item) {
-            return <span>Select an item from a list</span>;
+            return (
+                <div>
+                    <br /> <span>Select an item from a list</span>
+                </div>
+            );
         }
 
         const { item, image, loading, error } = this.state;
