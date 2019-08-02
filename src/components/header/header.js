@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css';
 
@@ -13,13 +14,13 @@ const Header = ({ onServiceChange }) => {
       </h3>
       <ul className="d-flex">
         <li className="header__item item">
-          <a className="item__href" href="#">People</a>
+          <Link to="/people">People</Link>
         </li>
         <li className="header__item item">
-          <a className="item__href" href="#">Planets</a>
+          <Link to="/planets">Planets</Link>
         </li>
         <li className="header__item item">
-          <a className="item__href" href="#">Starships</a>
+          <Link to="/starships">Starships</Link>
         </li>
       </ul>
       <button onClick={onServiceChange} className="btn btn-primary btn-sm header__button">
