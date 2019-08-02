@@ -72,6 +72,16 @@ RandomPlanet.defaultProps = {
     updateInterval: 10000
 }
 
+RandomPlanet.propTypes = {
+    updateInterval: (props, propName, componentName) => {
+        const value = props[propName];
+        if (typeof value === 'number' && !isNaN(value)) {
+            return null;
+        }
+        return new TypeError(`${componentName}: ${propName} must be number`);
+    }
+}
+
 const PlanetView = ({ planet }) => {
 
     const { id, name, population, rotationPeriod, diameter } = planet;
