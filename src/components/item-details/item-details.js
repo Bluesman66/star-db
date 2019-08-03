@@ -97,16 +97,16 @@ export default class ItemDetails extends Component {
 
 class ItemView extends Component {
     render() {
-        const item = this.props.item;
+        const { item, image, children } = this.props;
+        const { name } = item;
         return (
             <React.Fragment>
-                <img className="item-details__image" src={this.props.image} alt="" />
-
+                <img className="item-details__image" src={image} alt="" />                
                 <div className="item-details__body card-body">
-                    <h4>{this.props.name}</h4>
+                    <h4>{name}</h4>
                     <ul className="item-details__list list-group list-group-flush">
                         {
-                            React.Children.map(this.props.children, (child) => {
+                            React.Children.map(children, (child) => {
                                 return React.cloneElement(child, { item });
                             })
                         }
