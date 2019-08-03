@@ -21,6 +21,12 @@ const Header = ({ onServiceChange }) => {
         </li>
         <li className="header__item item">
           <Link to="/starships/">Starships</Link>
+        </li>        
+        <li className="header__item item">
+          <Link to="/login">Login</Link>
+        </li>
+        <li className="header__item item">
+          <Link to="/secret">Secret</Link>
         </li>
       </ul>
       <button onClick={onServiceChange} className="btn btn-primary btn-sm header__button">
