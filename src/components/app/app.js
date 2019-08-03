@@ -52,7 +52,7 @@ export default class App extends Component {
               <Route path="/planets" component={PlanetsPage} />
               <Route exact path="/starships" component={StarshipsPage} />
               <Route path="/starships/:id" render={
-                ({ match }) => {                  
+                ({ match }) => {
                   const { id } = match.params;
                   return <StarshipDetails itemId={id} />
                 }
